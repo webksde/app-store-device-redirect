@@ -6,14 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Redirecting ...</title>
     <meta name="description"
-      content="This page will redirect you to the App Store.">
+      content="This page will redirect you to our app in the app store.">
     <script type="text/javascript">
-      var gStoreUrl = window.getElementById('g-store-link');
-      var aStoreUrl = window.getElementById('a-store-link');
-      var fallbackStoreUrl = gStoreUrl;
+      function executeRedirect(){
+        var debug = false;
+        var googleStoreUrl = window.getElementById('g-store-link');
+        var appleStoreUrl = window.getElementById('a-store-link');
+        var fallbackStoreUrl = googleStoreUrl;
 
+        if (fallbackStoreUrl) {
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+          // Android devices:
+          else if (googleStoreUrl && /android/i.test(userAgent)) {
+            if (debug){  alert('Detected: Android device'); }
+            window.location.href = googleStoreUrl;
+          }
 
-      window.location.href = redirectUrl;
+          // Apple devices:
+          else if (appleStoreUrl && /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            if (debug){  alert('Detected: Apple device'); }
+            window.location.href = appleStoreUrl;
+          }
+
+          // Windows and other devices:
+          if (debug){ alert('Detected: Unknown device'); }
+          // Otherwise redirct to the fallback store URL:
+          window.location.href = fallbackStoreUrl;
+        } else {
+          console.error();
+        }
+      }
     </script>
     <style>
       .ci-color, a {
@@ -145,6 +167,9 @@
       </div>
 
     </div>
+    <script type="text/javascript">
+      executeRedirect();
+    </script>
   </body>
 
 </html>
