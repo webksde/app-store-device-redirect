@@ -10,8 +10,8 @@
       function executeRedirect() {
         // Enable / disable debugging for testing:
         var debug = true;
-        var googleStoreUrl = document.getElementById('g-store-link');
-        var appleStoreUrl = document.getElementById('a-store-link');
+        var googleStoreUrl = document.getElementById('google-store-link');
+        var appleStoreUrl = document.getElementById('apple-store-link');
         // Use Google Play Store as fallback by default (may be changed)!
         var fallbackStoreUrl = googleStoreUrl;
 
@@ -157,14 +157,14 @@
         <div class="store column" id="g">
           <div class="button-wrapper ci-color">
             <a href="https://play.google.com/store/apps/details?id=[PACKAGE-NAME]"
-              id="g-store-link"><strong>[APP-NAME]</strong><br />in Google Play
+              id="google-store-link"><strong>[APP-NAME]</strong><br />in Google Play
               Store</a>
           </div>
         </div>
         <div class="store column" id="a">
           <div class="button-wrapper ci-color">
             <a href="http://apps.apple.com/[COUNTRY]/app/[APP-NAME]/id[STORE-ID]]"
-              id="a-store-link"><strong>[APP-NAME]</strong><br />in Apple App
+              id="apple-store-link"><strong>[APP-NAME]</strong><br />in Apple App
               Store</a>
           </div>
         </div>
