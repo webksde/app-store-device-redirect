@@ -10,8 +10,8 @@
       function executeRedirect() {
         // Enable / disable debugging for testing:
         var debug = true;
-        var googleStoreUrl = window.getElementById('g-store-link');
-        var appleStoreUrl = window.getElementById('a-store-link');
+        var googleStoreUrl = document.getElementById('g-store-link');
+        var appleStoreUrl = document.getElementById('a-store-link');
         // Use Google Play Store as fallback by default (may be changed)!
         var fallbackStoreUrl = googleStoreUrl;
 
@@ -31,7 +31,7 @@
 
         // Fallback: Windows and other devices:
         else if (fallbackStoreUrl) {
-          if (debug) { alert('Detected: Unknown device'); }
+          if (debug) { alert('Detected: Unknown device. Redirecting to fallback.'); }
           // Otherwise redirct to the fallback store URL:
           window.location.href = fallbackStoreUrl;
         } else {
