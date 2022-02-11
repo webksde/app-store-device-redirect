@@ -1,4 +1,4 @@
-# app-store-device-redirect
+# App Store Device Redirect page
 Simple single-page HTML + Vanilla JavaScript App Store redirect page based on user agent.
 Can be used as template for individual implementations.
 
