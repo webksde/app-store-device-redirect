@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,37 +7,42 @@
     <meta name="description"
       content="This page will redirect you to our app in the app store.">
     <script type="text/javascript">
-      function executeRedirect(){
-        var debug = false;
+      function executeRedirect() {
+        // Enable / disable debugging for testing:
+        var debug = true;
         var googleStoreUrl = window.getElementById('g-store-link');
         var appleStoreUrl = window.getElementById('a-store-link');
+        // Use Google Play Store as fallback by default (may be changed)!
         var fallbackStoreUrl = googleStoreUrl;
 
-        if (fallbackStoreUrl) {
-          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-          // Android devices:
-          else if (googleStoreUrl && /android/i.test(userAgent)) {
-            if (debug){  alert('Detected: Android device'); }
-            window.location.href = googleStoreUrl;
-          }
 
-          // Apple devices:
-          else if (appleStoreUrl && /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            if (debug){  alert('Detected: Apple device'); }
-            window.location.href = appleStoreUrl;
-          }
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // Android devices:
+        if (googleStoreUrl && /android/i.test(userAgent)) {
+          if (debug) { alert('Detected: Android device'); }
+          window.location.href = googleStoreUrl;
+        }
 
-          // Windows and other devices:
-          if (debug){ alert('Detected: Unknown device'); }
+        // Apple devices:
+        else if (appleStoreUrl && /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          if (debug) { alert('Detected: Apple device'); }
+          window.location.href = appleStoreUrl;
+        }
+
+        // Fallback: Windows and other devices:
+        else if (fallbackStoreUrl) {
+          if (debug) { alert('Detected: Unknown device'); }
           // Otherwise redirct to the fallback store URL:
           window.location.href = fallbackStoreUrl;
         } else {
-          console.error();
+          // Log error to console if no redirect was possible.
+          console.error('NO REDIRECT: User agent could not be detected and fallback app store url was not set.');
         }
       }
     </script>
     <style>
-      .ci-color, a {
+      .ci-color,
+      a {
         background-color: #2E90D0 !important;
         color: #FFF;
       }
@@ -57,7 +61,7 @@
         color: #FFF;
         font-family: 'Verdana', 'Arial', sans-serif;
         font-size: 14px;
-        overflow:hidden;
+        overflow: hidden;
       }
 
       body {
@@ -83,7 +87,7 @@
         width: 100%;
         max-width: 920px;
         text-align: center;
-        overflow:visible;
+        overflow: visible;
       }
 
       .subtitle {
@@ -127,7 +131,7 @@
           width: 300%;
           max-width: 100vw;
           height: 300%;
-          max-height:100vh;
+          max-height: 100vh;
           opacity: 0;
         }
       }
