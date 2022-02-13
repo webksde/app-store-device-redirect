@@ -3,6 +3,7 @@ Simple single-page HTML + Vanilla JavaScript App Store redirect page based on us
 Can be used as template for individual implementations.
 
 ## Demo
+Debug mode is enabled, that's the reason for the alters.
 https://webksde.github.io/app-store-device-redirect/index.html
 
 ## Functionality
